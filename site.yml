@@ -23,6 +23,15 @@
       state: latest
     when: ansible_distribution == "Ubuntu"
 
+  - name: copy default html file for site
+    tags: apache, ubuntu
+    copy: 
+      src: default_site.html
+      dest: /var/www/html/index53.html
+      owner: root
+      group: root
+      mode: 0644
+
   - name: Make sure apache2 is started
     tags: apstart
     ansible.builtin.sysvinit:
